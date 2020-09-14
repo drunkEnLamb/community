@@ -1,3 +1,4 @@
+/*index*/
 body{
     background-color: #efefef;
 }
@@ -10,4 +11,67 @@ body{
 .btn-publish{
     float: right;
     margin-bottom: 15px;
+}
+
+
+/*login*/
+.mod-body{
+    padding: 50px 60px;
+}
+.aw-login-box{
+    width: 714px;
+    margin: 0 auto;
+    background-color: #fff;
+    border: 1px solid #b3b3b3;
+    border-radius: 3px
+}
+#wrapper{
+    position: relative;
+    margin-bottom: 20px;
+    padding-top: 100px;
+}
+.content{
+    width: 300px;
+    margin-right: 60px;
+}
+.side-bar{
+    height: 326px;
+    padding: 60px 0 60px 60px;
+    border-left: 1px solid #e6e6e6;
+}
+.mod-footer{
+    height: 70px;
+    line-height: 70px;
+    background-color: #f5f5f5;
+    padding: 0 60px;
+    color: #66b7ff;
+}
+.form-control{
+    height: 40px;
+    padding-left: 15px !important;
+    box-shadow: none;
+    border-color: #e6e6e6;
+}
+.btn-primary{
+    background-color: #59b0ff;
+    width: 112px;
+    color: #fff !important;
+
+}
+.btn-large{
+    min-width: 120px;
+    height: 38px;
+    padding: 0 10px;
+    line-height: 38px;
+    font-size: 14px;
+    float: right;
+    margin-bottom: 15px;
+}
+.btn-github{
+    background-color: #3a5799;
+    color: #fff !important;
+}
+.btn-other{
+    background-color: #1eb5ee;
+    color: #fff !important;
 }

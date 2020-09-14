@@ -7,9 +7,10 @@ import okhttp3.*;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
-
+//github授权登录
 @Component
 public class GithubProvider {
+    //根据code获取token
     public String getAccessToken(AccessTokenDTO accessTokenDTO){
         MediaType mediaType = MediaType.get("application/json; charset=utf-8");
 
@@ -30,6 +31,7 @@ public class GithubProvider {
         return null;
     }
 
+    //根据token获取用户信息
     public GithubUser getUser(String accessToken){
 
         OkHttpClient client = new OkHttpClient();
