@@ -12,7 +12,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 
 @Service
-public class QusetionService {
+public class PublishService {
 
     @Autowired
     QusetionMapper qusetionMapper;

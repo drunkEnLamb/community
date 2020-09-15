@@ -1,6 +1,6 @@
 package life.beyond.community.controller;
 
-import life.beyond.community.service.QusetionService;
+import life.beyond.community.service.PublishService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 public class PublishController {
 
     @Autowired
-    QusetionService qusetionService;
+    PublishService publishService;
 
     @GetMapping("/publish")
     public String publish(){
@@ -27,7 +27,7 @@ public class PublishController {
                             @RequestParam("tag") String tag,
                             HttpServletRequest request,
                             Model model){
-        boolean publish = qusetionService.publish(title, description, tag, request, model);
+        boolean publish = publishService.publish(title, description, tag, request, model);
         if(publish==false)
             return "publish";
         return "redirect:/";
