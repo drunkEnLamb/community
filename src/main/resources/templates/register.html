@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Login - Beyond Community</title>
+    <title>Register - Beyond Community</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="css/community.css">
@@ -12,10 +12,9 @@
 <div id="wrapper">
     <div class="aw-login-box">
         <div class="mod-body clearfix">
-            <div class="content pull-left">
-                <h2>Beyond Community</h2>
-                <p style="color: #2aabd2" th:text="${msg}" th:if="${not #strings.isEmpty(msg)}"></p>
-                <form id="login_form" method="post" th:action="@{/login}">
+            <div class="content">
+                <h2>用户注册</h2>
+                <form id="login_form" method="post" th:action="@{/register}">
                     <div class="form-group">
                         <label for="name">用户名</label>
                         <input type="text" required="required" name="username" class="form-control" id="name" placeholder="用户名">
@@ -24,27 +23,12 @@
                         <label for="password">密码</label>
                         <input type="password" required="required" name="password" class="form-control" id="password" placeholder="密码">
                     </div>
-                    <button type="submit" class="btn btn-large btn-primary">登陆</button>
+                    <button type="submit" class="btn btn-large btn-primary">注册</button>
                 </form>
             </div>
-            <div class="side-bar pull-left">
 
-                <h3>第三方账号登录</h3>
-
-
-                <a href="https://github.com/login/oauth/authorize?client_id=a8e54f279d763df1e81d&redirect_uri=http://localhost:8887/callback&scope=user&state=1"
-                   class="btn btn-block btn-github"> <i class="icon icon-github"></i> Github 登录</a>
-
-
-                <a href="" class="btn btn-block btn-other">  其他方式登陆</a>
-
-
-            </div>
         </div>
-        <div class="mod-footer">
-            <span>还没有账号?</span>&nbsp;&nbsp;
-            <a th:href="@{/registerPage}">立即注册</a>&nbsp;&nbsp;
-        </div>
+
     </div>
 </div>
 </body>

@@ -20,7 +20,6 @@ public class IndexService {
             for (Cookie cookie : cookies) {
                 if(cookie.getName().equals("token")){
                     String token = cookie.getValue();
-                    System.out.println("success");
                     User user = userMapper.findByToken(token);
                     if(user !=null){
                         request.getSession().setAttribute("user", user);

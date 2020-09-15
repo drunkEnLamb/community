@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Map;
 
 @Controller
 public class LoginContrller {
@@ -16,16 +17,22 @@ public class LoginContrller {
     @Autowired
     LoginService loginService;
 
-    @GetMapping("/login")
+    @GetMapping("/loginPage")
     public String login(){
         return "login";
     }
 
-    @PostMapping("/userLogin")
+    @PostMapping("/login")
     public String loginLocal(@RequestParam("username") String username,
                              @RequestParam("password") String password,
-                             HttpServletResponse response){
-        loginService.login(username,password,response);
+                             HttpServletResponse response,
+                             Map<String,Object> map){
+        boolean login = loginService.login(username, password, response);
+        if(login==false) {
+            map.put("msg","用户名密码错误");
+            return "login";
+        }
+
         return "redirect:/";
     }
 }

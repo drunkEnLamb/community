@@ -13,11 +13,13 @@ public class LoginService {
 
     @Autowired
     UserMapper userMapper;
-    public void login(String username, String password, HttpServletResponse response) {
+    public boolean login(String username, String password, HttpServletResponse response) {
         User user = userMapper.findByNameAndPwd(username, password);
+        if(user == null)
+            return false;
         String token = user.getToken();
-        System.out.println("-----------mytoken-------"+token);
         response.addCookie(new Cookie("token",token));
         System.out.println();
+        return true;
     }
 }

@@ -7,6 +7,8 @@ public class User {
     private String token;
     private long gmtCreate;
     private long gmtModified;
+    private String bio;
+    private String password;
 
     public int getId() {
         return id;
@@ -56,6 +58,22 @@ public class User {
         this.gmtModified = gmtModified;
     }
 
+    public String getBio() {
+        return bio;
+    }
+
+    public void setBio(String bio) {
+        this.bio = bio;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -65,6 +83,8 @@ public class User {
                 ", token='" + token + '\'' +
                 ", gmtCreate=" + gmtCreate +
                 ", gmtModified=" + gmtModified +
+                ", bio='" + bio + '\'' +
+                ", password='" + password + '\'' +
                 '}';
     }
 }
