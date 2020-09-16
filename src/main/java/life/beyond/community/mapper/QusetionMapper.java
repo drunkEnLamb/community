@@ -22,4 +22,10 @@ public interface QusetionMapper {
 
     @Select("select count(1) from question")
     Integer count();
+
+    @Select("select * from question where creator_id=#{userId} limit #{offset},#{size}")
+    List<Question> profileList(@Param("userId") int userId, @Param("offset") Integer offset, @Param("size") Integer size);
+
+    @Select("select count(1) from question where creator_id=#{userId}")
+    Integer profileCount(@Param("userId") int userId);
 }

@@ -10,13 +10,11 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class IndexService {
+public class ProfileService {
 
     @Autowired
     UserMapper userMapper;
@@ -24,30 +22,11 @@ public class IndexService {
     @Autowired
     QusetionMapper qusetionMapper;
 
-    //根据token验证登陆状态
-    public void index(HttpServletRequest request){
-//        Cookie[] cookies = request.getCookies();
-//        if(cookies!=null){
-//            for (Cookie cookie : cookies) {
-//                if(cookie.getName().equals("token")){
-//                    String token = cookie.getValue();
-//                    User user = userMapper.findByToken(token);
-//                    if(user !=null){
-//                        request.getSession().setAttribute("user", user);
-//                    }
-//                    break;
-//                }
-//            }
-//        }
-    }
-
-    //展示问题列表
-    public PaginationDTO list(Integer page, Integer size){
-
+    public PaginationDTO list(int userId, Integer page, Integer size) {
         if(page<1)  page = 1;
         Integer offset = size * (page - 1);
 
-        List<Question> questionList = qusetionMapper.list(offset,size);
+        List<Question> questionList = qusetionMapper.profileList(userId,offset,size);
         List<QuestionDTO> questionDTOList = new ArrayList<>();
 
         PaginationDTO paginationDTO = new PaginationDTO();
@@ -59,11 +38,9 @@ public class IndexService {
             questionDTOList.add(questionDTO);
         }
         paginationDTO.setQuestions(questionDTOList);
-        Integer totalCount = qusetionMapper.count();
+        Integer totalCount = qusetionMapper.profileCount(userId);
         paginationDTO.setPagination(totalCount,page,size);
 
         return paginationDTO;
     }
-
-
 }

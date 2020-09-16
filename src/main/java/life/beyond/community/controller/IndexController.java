@@ -15,7 +15,7 @@ import java.util.List;
 @Controller
 public class IndexController {
 
-   @Autowired
+    @Autowired
     IndexService indexService;
 
     @GetMapping("/")

@@ -40,20 +40,20 @@ public class PublishService {
         }
 
         User user = null;
-        //有异议，是否登录后session中已有user，在IndexService中获得，不需要再次获得
-        Cookie[] cookies = request.getCookies();
-        if(cookies!=null){
-            for (Cookie cookie : cookies) {
-                if(cookie.getName().equals("token")){
-                    String token = cookie.getValue();
-                    user = userMapper.findByToken(token);
-                    if(user !=null){
-                        request.getSession().setAttribute("user", user);
-                    }
-                    break;
-                }
-            }
-        }
+
+//        Cookie[] cookies = request.getCookies();
+//        if(cookies!=null){
+//            for (Cookie cookie : cookies) {
+//                if(cookie.getName().equals("token")){
+//                    String token = cookie.getValue();
+//                    user = userMapper.findByToken(token);
+//                    if(user !=null){
+//                        request.getSession().setAttribute("user", user);
+//                    }
+//                    break;
+//                }
+//            }
+//        }
 
         if(user == null){
             model.addAttribute("error","用户未登录");

@@ -22,6 +22,14 @@ body{
     color: #999;
 }
 
+
+/*profile*/
+.profile .section{
+    margin-top: 15px;
+}
+
+
+
 /*login*/
 .mod-body{
     padding: 50px 60px;
