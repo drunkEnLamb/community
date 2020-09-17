@@ -4,9 +4,7 @@ import life.beyond.community.service.PublishService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -21,13 +19,21 @@ public class PublishController {
         return "publish";
     }
 
+    @GetMapping("/publish/{id}")
+    public String edit(@PathVariable(name = "id") Integer id,Model model){
+
+        publishService.getById(id,model);
+        return "publish";
+    }
+
     @PostMapping("/publish")
     public String doPublish(@RequestParam("title") String title,
                             @RequestParam("description") String description,
                             @RequestParam("tag") String tag,
+                            @RequestParam("id") Integer id,
                             HttpServletRequest request,
                             Model model){
-        boolean publish = publishService.publish(title, description, tag, request, model);
+        boolean publish = publishService.publish(title, description, tag,id, request, model);
         if(publish==false)
             return "publish";
         return "redirect:/";

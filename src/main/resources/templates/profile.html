@@ -23,8 +23,9 @@
                     </a>
                 </div>
                 <div class="media-body">
-                    <h4 class="media-heading" th:text="${question.getTitle()}">怎么快速学会springboot开发</h4>
-                    <h3 th:text="${section}"></h3>
+                    <h4 class="media-heading">
+                        <a th:href="@{'/question/'+${question.id}}" th:text="${question.getTitle()}"></a>
+                    </h4>
                     <span class="text-desc">[[${question.commentCount}]] 个回复 • [[${question.viewCount}]] 次浏览 • [[${#dates.format(question.getGmtCreate(),'yyyy-MM-dd HH:mm')}]]发布</span>
                 </div>
             </div>

@@ -4,6 +4,7 @@ import life.beyond.community.dto.AccessTokenDTO;
 import life.beyond.community.dto.GithubUser;
 import life.beyond.community.mapper.UserMapper;
 import life.beyond.community.model.User;
+import life.beyond.community.model.UserExample;
 import life.beyond.community.provider.GithubProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -41,14 +43,16 @@ public class AuthorizeService {
         String accessToken = githubProvider.getAccessToken(accessTokenDTO);
         GithubUser githubUser = githubProvider.getUser(accessToken);
         if(githubUser!=null){
-            User getUser = userMapper.findByAccountId(githubUser.getId());
-            if(getUser == null){
+            UserExample userExample = new UserExample();
+            userExample.createCriteria().andAccountIdEqualTo(githubUser.getId());
+            List<User> users = userMapper.selectByExample(userExample);
+            if(users.size() == 0){
                 System.out.println("user is null");
                 User user = new User();
                 String token = UUID.randomUUID().toString();
                 user.setToken(token);
                 user.setName(githubUser.getName());
-                user.setAccountId(String.valueOf(githubUser.getId()));
+                user.setAccountId(githubUser.getId());
                 user.setGmtCreate(System.currentTimeMillis());
                 user.setGmtModified(user.getGmtCreate());
                 user.setAvatarUrl(githubUser.getAvatarUrl());
@@ -57,7 +61,7 @@ public class AuthorizeService {
             }
             else {
                 System.out.println("user is not null");
-                String token = getUser.getToken();
+                String token = users.get(0).getToken();
                 System.out.println(response);
                 response.addCookie(new Cookie("token",token));
             }

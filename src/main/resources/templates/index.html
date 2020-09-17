@@ -27,7 +27,7 @@
                     <h4 class="media-heading"  >
                         <a th:href="@{'/question/'+${question.id}}" th:text="${question.getTitle()}"></a>
                     </h4>
-                    <span  th:text="${question.getDescription()}"></span> <br>
+                    <span  th:text="${question.getDescription()}">问题描述</span> <br>
                     <span class="text-desc">[[${question.commentCount}]] 个回复 • [[${question.viewCount}]] 次浏览 • [[${#dates.format(question.getGmtCreate(),'yyyy-MM-dd HH:mm')}]]发布</span>
                 </div>
             </div>
