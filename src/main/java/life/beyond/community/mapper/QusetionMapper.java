@@ -1,5 +1,6 @@
 package life.beyond.community.mapper;
 
+import life.beyond.community.dto.QuestionDTO;
 import life.beyond.community.model.Question;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
@@ -28,4 +29,7 @@ public interface QusetionMapper {
 
     @Select("select count(1) from question where creator_id=#{userId}")
     Integer profileCount(@Param("userId") int userId);
+
+    @Select("select * from question where id=#{id}")
+    Question getById(@Param("id") Integer id);
 }

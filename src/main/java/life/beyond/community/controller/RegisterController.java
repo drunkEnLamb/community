@@ -18,7 +18,7 @@ public class RegisterController {
     @Autowired
     RegisterService registerService;
 
-    @GetMapping("/registerPage")
+    @GetMapping("/register")
     public String registerPage(){
         return "register";
     }

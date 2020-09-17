@@ -18,7 +18,7 @@ public class LoginContrller {
     @Autowired
     LoginService loginService;
 
-    @GetMapping("/loginPage")
+    @GetMapping("/login")
     public String login(){
         return "login";
     }

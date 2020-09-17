@@ -39,21 +39,9 @@ public class PublishService {
             return false;
         }
 
-        User user = null;
+        User user = (User) request.getSession().getAttribute("user");
 
-//        Cookie[] cookies = request.getCookies();
-//        if(cookies!=null){
-//            for (Cookie cookie : cookies) {
-//                if(cookie.getName().equals("token")){
-//                    String token = cookie.getValue();
-//                    user = userMapper.findByToken(token);
-//                    if(user !=null){
-//                        request.getSession().setAttribute("user", user);
-//                    }
-//                    break;
-//                }
-//            }
-//        }
+
 
         if(user == null){
             model.addAttribute("error","用户未登录");
