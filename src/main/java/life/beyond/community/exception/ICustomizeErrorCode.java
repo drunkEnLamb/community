@@ -1,0 +1,5 @@
+package life.beyond.community.exception;
+
+public interface ICustomizeErrorCode {
+    String getMessage();
+}

@@ -1,5 +1,7 @@
 package life.beyond.community.service;
 
+import life.beyond.community.exception.CustomizeErrorCode;
+import life.beyond.community.exception.CustomizeException;
 import life.beyond.community.mapper.QuestionMapper;
 import life.beyond.community.mapper.UserMapper;
 import life.beyond.community.model.Question;
@@ -53,17 +55,22 @@ public class PublishService {
         question.setDescription(description);
         question.setTag(tag);
         question.setCreatorId(user.getId());
+        //创建
         if(id==null){
             question.setGmtCreate(System.currentTimeMillis());
             question.setGmtModified(question.getGmtCreate());
 
             questionMapper.insert(question);
         }
+        //更新
         else {
             question.setGmtModified(System.currentTimeMillis());
             QuestionExample questionExample = new QuestionExample();
             questionExample.createCriteria().andIdEqualTo(id);
-            questionMapper.updateByExampleSelective(question, questionExample);
+            int updated = questionMapper.updateByExampleSelective(question, questionExample);
+            if(updated!=1){
+                throw new CustomizeException(CustomizeErrorCode.QUESTION_NOT_FOUND);
+            }
         }
 
 

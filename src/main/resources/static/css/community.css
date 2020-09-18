@@ -34,6 +34,11 @@ body{
     font-size: 13px;
 }
 
+/*error*/
+.jumbotron{
+    margin: 50px;
+}
+
 /*login*/
 .mod-body{
     padding: 50px 60px;
