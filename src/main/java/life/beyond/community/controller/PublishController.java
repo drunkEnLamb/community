@@ -20,7 +20,7 @@ public class PublishController {
     }
 
     @GetMapping("/publish/{id}")
-    public String edit(@PathVariable(name = "id") Integer id,Model model){
+    public String edit(@PathVariable(name = "id") Long id,Model model){
 
         publishService.getById(id,model);
         return "publish";
@@ -30,7 +30,7 @@ public class PublishController {
     public String doPublish(@RequestParam("title") String title,
                             @RequestParam("description") String description,
                             @RequestParam("tag") String tag,
-                            @RequestParam("id") Integer id,
+                            @RequestParam("id") Long id,
                             HttpServletRequest request,
                             Model model){
         boolean publish = publishService.publish(title, description, tag,id, request, model);

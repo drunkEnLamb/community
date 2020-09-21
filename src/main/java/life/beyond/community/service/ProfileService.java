@@ -24,12 +24,12 @@ public class ProfileService {
     @Autowired
     QuestionMapper questionMapper;
 
-    public PaginationDTO list(int userId, Integer page, Integer size) {
+    public PaginationDTO list(Long userId, Integer page, Integer size) {
         if(page<1)  page = 1;
         Integer offset = size * (page - 1);
         QuestionExample questionExample = new QuestionExample();
         questionExample.createCriteria().andCreatorIdEqualTo(userId);
-        List<Question> questionList = questionMapper.selectByExampleWithRowbounds(questionExample, new RowBounds(offset, size));
+        List<Question> questionList = questionMapper.selectByExampleWithBLOBsWithRowbounds(questionExample, new RowBounds(offset, size));
         List<QuestionDTO> questionDTOList = new ArrayList<>();
 
         PaginationDTO paginationDTO = new PaginationDTO();

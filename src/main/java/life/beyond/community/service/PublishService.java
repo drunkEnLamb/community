@@ -22,7 +22,7 @@ public class PublishService {
     @Autowired
     UserMapper userMapper;
 
-    public boolean publish(String title, String description, String tag, Integer id, HttpServletRequest request, Model model) {
+    public boolean publish(String title, String description, String tag, Long id, HttpServletRequest request, Model model) {
 
         model.addAttribute("title",title);
         model.addAttribute("description",description);
@@ -60,7 +60,7 @@ public class PublishService {
             question.setGmtCreate(System.currentTimeMillis());
             question.setGmtModified(question.getGmtCreate());
 
-            questionMapper.insert(question);
+            questionMapper.insertSelective(question);
         }
         //更新
         else {
@@ -78,7 +78,7 @@ public class PublishService {
         return true;
     }
 
-    public void getById(Integer id,Model model) {
+    public void getById(Long id,Model model) {
         Question question = questionMapper.selectByPrimaryKey(id);
         model.addAttribute("title",question.getTitle());
         model.addAttribute("description",question.getDescription());

@@ -6,7 +6,7 @@ import lombok.Data;
 public class GithubUser {
 
     private String name;
-    private long id;
+    private Long id;
     private String bio;
     private String avatarUrl;
 
