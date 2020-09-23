@@ -44,6 +44,9 @@ body{
     font-size: 15px;
     cursor: pointer;
 }
+.menu .active{
+    color: #449ef3;
+}
 .menu .icon:hover{
     color: #449ef3;
 }
@@ -51,6 +54,16 @@ body{
     padding-bottom: 5px;
     margin-bottom: 15px;
     border-bottom: 1px solid #eee;
+}
+.sub_comments{
+    border-radius: 5px;
+    margin-top: 10px;
+    border: 1px solid #eee;
+    padding-top: 15px;
+    margin-bottom: 15px;
+}
+.sub_comments .btn{
+    margin: 10px 0;
 }
 /*profile*/
 .profile .section{
@@ -64,7 +77,9 @@ body{
     font-size: 13px;
     margin-bottom: 15px;
 }
-
+.question-title{
+    margin-top: 25px;
+}
 /*error*/
 .jumbotron{
     margin: 50px;

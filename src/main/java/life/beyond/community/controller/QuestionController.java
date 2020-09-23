@@ -1,8 +1,8 @@
 package life.beyond.community.controller;
 
-import life.beyond.community.dto.CommentCreateDTO;
 import life.beyond.community.dto.CommentDTO;
 import life.beyond.community.dto.QuestionDTO;
+import life.beyond.community.enums.CommentTypeEnum;
 import life.beyond.community.service.CommentService;
 import life.beyond.community.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +27,7 @@ public class QuestionController {
                            Model model){
         questionService.incView(id);
         QuestionDTO questionDTO = questionService.question(id);
-        List<CommentDTO> comments = commentService.listByQuestionId(id);
+        List<CommentDTO> comments = commentService.listByTargetId(id, CommentTypeEnum.QUESTION);
 
         model.addAttribute("question",questionDTO);
         model.addAttribute("comments",comments);
