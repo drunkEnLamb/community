@@ -1,5 +1,6 @@
 package life.beyond.community.controller;
 
+import life.beyond.community.cache.TagCache;
 import life.beyond.community.service.PublishService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,7 +16,8 @@ public class PublishController {
     PublishService publishService;
 
     @GetMapping("/publish")
-    public String publish(){
+    public String publish(Model model){
+        model.addAttribute("tags", TagCache.get());
         return "publish";
     }
 
@@ -34,6 +36,7 @@ public class PublishController {
                             HttpServletRequest request,
                             Model model){
         boolean publish = publishService.publish(title, description, tag,id, request, model);
+        model.addAttribute("tags", TagCache.get());
         if(publish==false)
             return "publish";
         return "redirect:/";

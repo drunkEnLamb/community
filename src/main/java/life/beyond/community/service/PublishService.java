@@ -1,5 +1,6 @@
 package life.beyond.community.service;
 
+import life.beyond.community.cache.TagCache;
 import life.beyond.community.exception.CustomizeErrorCode;
 import life.beyond.community.exception.CustomizeException;
 import life.beyond.community.mapper.QuestionMapper;
@@ -7,6 +8,7 @@ import life.beyond.community.mapper.UserMapper;
 import life.beyond.community.model.Question;
 import life.beyond.community.model.QuestionExample;
 import life.beyond.community.model.User;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
@@ -41,6 +43,11 @@ public class PublishService {
         }
         if(tag == null|| tag == ""){
             model.addAttribute("error","标签不能为空");
+            return false;
+        }
+        String invalid = TagCache.filterInvalid(tag);
+        if(StringUtils.isNotBlank(invalid)){
+            model.addAttribute("error","输入非法标签："+invalid);
             return false;
         }
 
@@ -84,5 +91,6 @@ public class PublishService {
         model.addAttribute("description",question.getDescription());
         model.addAttribute("tag",question.getTag());
         model.addAttribute("id",question.getId());
+        model.addAttribute("tags", TagCache.get());
     }
 }

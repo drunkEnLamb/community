@@ -92,6 +92,14 @@ body{
 .question-wechat{
     width: 70%;
 }
+.publish-tag-tab{
+    display: none;
+    margin-top: 10px;
+}
+.tab-pane{
+    margin-top: 10px;
+}
+
 /*error*/
 .jumbotron{
     margin: 50px;
