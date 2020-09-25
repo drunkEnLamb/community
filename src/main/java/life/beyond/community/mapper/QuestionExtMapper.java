@@ -11,4 +11,6 @@ public interface QuestionExtMapper {
 
     int incView(Long id);
     int incCommentCount(Long id);
+    List<Question> selectRelated(Question question);
 }
+

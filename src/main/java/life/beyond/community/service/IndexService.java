@@ -35,7 +35,9 @@ public class IndexService {
 
         if(page<1)  page = 1;
         Integer offset = size * (page - 1);
-        List<Question> questionList = questionMapper.selectByExampleWithBLOBsWithRowbounds(new QuestionExample(), new RowBounds(offset, size));
+        QuestionExample questionExample = new QuestionExample();
+        questionExample.setOrderByClause("gmt_create desc");
+        List<Question> questionList = questionMapper.selectByExampleWithBLOBsWithRowbounds(questionExample, new RowBounds(offset, size));
         List<QuestionDTO> questionDTOList = new ArrayList<>();
 
         PaginationDTO paginationDTO = new PaginationDTO();
