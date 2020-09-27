@@ -40,7 +40,7 @@ public class IndexService {
         List<Question> questionList = questionMapper.selectByExampleWithBLOBsWithRowbounds(questionExample, new RowBounds(offset, size));
         List<QuestionDTO> questionDTOList = new ArrayList<>();
 
-        PaginationDTO paginationDTO = new PaginationDTO();
+        PaginationDTO<QuestionDTO> paginationDTO = new PaginationDTO();
         for (Question question : questionList) {
             User user = userMapper.selectByPrimaryKey(question.getCreatorId());
             QuestionDTO questionDTO = new QuestionDTO();
@@ -48,7 +48,7 @@ public class IndexService {
             questionDTO.setUser(user);
             questionDTOList.add(questionDTO);
         }
-        paginationDTO.setQuestions(questionDTOList);
+        paginationDTO.setData(questionDTOList);
         Integer totalCount = (int)questionMapper.countByExample(new QuestionExample());
         paginationDTO.setPagination(totalCount,page,size);
 

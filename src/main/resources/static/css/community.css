@@ -72,7 +72,6 @@ body{
 
 /*question*/
 .community-menu{
-    display: block;
     color: #999;
     font-size: 13px;
     margin-bottom: 15px;
@@ -99,6 +98,12 @@ body{
 .tab-pane{
     margin-top: 10px;
 }
+.tab-pane .label-info{
+    white-space: normal;
+    margin: 4px 3px;
+    display: inline-block;
+}
+
 
 /*error*/
 .jumbotron{

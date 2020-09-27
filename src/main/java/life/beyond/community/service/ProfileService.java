@@ -28,11 +28,13 @@ public class ProfileService {
         if(page<1)  page = 1;
         Integer offset = size * (page - 1);
         QuestionExample questionExample = new QuestionExample();
-        questionExample.createCriteria().andCreatorIdEqualTo(userId);
+        questionExample.createCriteria()
+                .andCreatorIdEqualTo(userId);
+        questionExample.setOrderByClause("gmt_create desc");
         List<Question> questionList = questionMapper.selectByExampleWithBLOBsWithRowbounds(questionExample, new RowBounds(offset, size));
         List<QuestionDTO> questionDTOList = new ArrayList<>();
 
-        PaginationDTO paginationDTO = new PaginationDTO();
+        PaginationDTO<QuestionDTO> paginationDTO = new PaginationDTO();
         for (Question question : questionList) {
             User user = userMapper.selectByPrimaryKey(question.getCreatorId());
             QuestionDTO questionDTO = new QuestionDTO();
@@ -40,7 +42,7 @@ public class ProfileService {
             questionDTO.setUser(user);
             questionDTOList.add(questionDTO);
         }
-        paginationDTO.setQuestions(questionDTOList);
+        paginationDTO.setData(questionDTOList);
         int totalCount = (int)questionMapper.countByExample(questionExample);
         paginationDTO.setPagination(totalCount,page,size);
 
