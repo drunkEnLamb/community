@@ -47,7 +47,6 @@ public class AuthorizeService {
             userExample.createCriteria().andAccountIdEqualTo(githubUser.getId());
             List<User> users = userMapper.selectByExample(userExample);
             if(users.size() == 0){
-                System.out.println("user is null");
                 User user = new User();
                 String token = UUID.randomUUID().toString();
                 user.setToken(token);
@@ -60,7 +59,6 @@ public class AuthorizeService {
                 response.addCookie(new Cookie("token",token));
             }
             else {
-                System.out.println("user is not null");
                 String token = users.get(0).getToken();
                 System.out.println(response);
                 response.addCookie(new Cookie("token",token));
