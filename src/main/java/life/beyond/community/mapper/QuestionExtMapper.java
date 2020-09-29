@@ -12,5 +12,7 @@ public interface QuestionExtMapper {
     int incView(Long id);
     int incCommentCount(Long id);
     List<Question> selectRelated(Question question);
+    Integer countBySearch(String search);
+    List<Question> selectBySearch(String search, Integer offset, Integer size);
 }
 

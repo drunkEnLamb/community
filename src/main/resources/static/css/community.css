@@ -110,8 +110,11 @@ body{
     margin: 50px;
 }
 
-
-
+/*footer*/
+.footer{
+    padding: 10px 25%;
+    color: #666;
+}
 
 
 /*login*/
