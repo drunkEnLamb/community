@@ -21,6 +21,7 @@ public class RegisterService {
         user.setToken(token);
         user.setGmtCreate(System.currentTimeMillis());
         user.setGmtModified(user.getGmtCreate());
+        user.setAvatarUrl("http://beyond-1.oss-cn-beijing.aliyuncs.com/44160d5e-5a53-4952-bee4-91cd22d545a6.png?Expires=1916734743&OSSAccessKeyId=LTAI4GG9kyUsqCWFGxyVcTT1&Signature=DhHbmY%2BtWFDc9TndD4%2BE92WqfzM%3D");
         userMapper.insert(user);
     }
 }

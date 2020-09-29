@@ -14,7 +14,9 @@
 - git clone https://github.com/drunkEnLamb/community.git
 - yum install maven
 - mvn -v
--maven compile package
+- mvn compile package
+- cp src/main/resources/application.properties src/main/resources/application-production.properties
+- vim src/main/resources/application-production.properties
 ## 资料
 [spring文档](https://spring.io/guides)
 [Github OAut](https://developer.github.com/apps/building-oauth-apps/creating-an-oauth-app/)
