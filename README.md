@@ -1,5 +1,20 @@
 ## beyond社区
 
+## 部署
+### 依赖
+- Git
+- JDK
+- Maven
+- Mysql
+## 步骤
+- yum update
+- yum install git
+- mkdir App
+- cd App/
+- git clone https://github.com/drunkEnLamb/community.git
+- yum install maven
+- mvn -v
+-maven compile package
 ## 资料
 [spring文档](https://spring.io/guides)
 [Github OAut](https://developer.github.com/apps/building-oauth-apps/creating-an-oauth-app/)
