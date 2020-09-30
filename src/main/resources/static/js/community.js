@@ -124,3 +124,5 @@ function selectTag(e){
 function showSelectTag(){
     $("#select-tag").show();
 }
+
+//图片加载

@@ -3,10 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Register - Beyond Community</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
-    <link rel="stylesheet" href="css/community.css">
-    <script src="js/bootstrap.min.js" type="application/javascript"></script>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="/css/community.css">
+    <script src="/js/jquery-3.5.1.min.js"></script>
+    <script src="/js/bootstrap.min.js" type="application/javascript"></script>
+    <script src="/js/community.js" type="application/javascript"></script>
+
 </head>
 <body>
 <div id="wrapper">
@@ -25,17 +28,30 @@
                         <input type="password" required="required" name="password" class="form-control" id="password" placeholder="密码">
                     </div>
                     <div class="form-group">
-                        <label for="file">上传头像</label>
-                        <input type="file" name="file" class="form-control" id="file" accept="image/png,image/jpg,image/jpeg,image/bmp">
+                        <label for="imageFile">上传头像</label>
+                        <input type="file" name="file" class="form-control" id="imageFile" accept="image/png,image/jpg,image/jpeg,image/bmp">
                     </div>
                     <button type="submit" class="btn btn-large btn-primary">注册</button>
 
                     <!--                </form>-->
                 </div>
                 <div class="register-side-bar pull-left">
-
-                    <label>头像</label>
-
+                    <script>
+                        $("#imageFile").change(function () {
+                            var file = this.files[0];
+                            if (window.FileReader) {
+                                var reader = new FileReader();
+                                reader.readAsDataURL(file);
+                                //监听文件读取结束后事件
+                                reader.onloadend = function (e) {
+                                    //e.target.result就是最后的路径地址
+                                    $("#image").attr("src",e.target.result);
+                                };
+                            }
+                        });
+                    </script>
+                    <h4>头像</h4>
+                    <img id="image" style="width: 170px" src="http://beyond-1.oss-cn-beijing.aliyuncs.com/87f90673-7dca-47aa-bd87-9063fcc46183.png?Expires=1916739694&OSSAccessKeyId=LTAI4GFgqtjeTs713zGAWert&Signature=FXByoyJg9He9WXKHKOYCd4MRKL0%3D"/>
 
                 </div>
             </form>
