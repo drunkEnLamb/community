@@ -31,12 +31,8 @@
             <div class="side-bar pull-left">
 
                 <h3>第三方账号登录</h3>
-
-
                 <a th:href="@{https://github.com/login/oauth/authorize(client_id='a8e54f279d763df1e81d',redirect_uri=${#httpServletRequest.getScheme()+'://'+#httpServletRequest.getServerName()+':'+#httpServletRequest.getServerPort()+'/callback'},scope='user',state=1)}"
                    class="btn btn-block btn-github"> <i class="icon icon-github"></i> Github 登录</a>
-
-
                 <a href="" class="btn btn-block btn-other">  其他方式登陆</a>
 
 

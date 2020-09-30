@@ -27,13 +27,15 @@ public class FileController {
             String fileName = ossProvider.upload(file.getInputStream(), file.getOriginalFilename());
             FileDTO fileDTO = new FileDTO();
             fileDTO.setSuccess(1);
+            fileDTO.setMessage("上传成功");
             fileDTO.setUrl(fileName);
             return fileDTO;
         } catch (Exception e) {
             e.printStackTrace();
         }
         FileDTO fileDTO = new FileDTO();
-        fileDTO.setSuccess(1);
+        fileDTO.setSuccess(0);
+        fileDTO.setMessage("上传失败");
         fileDTO.setUrl("");
         return fileDTO;
     }

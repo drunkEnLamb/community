@@ -26,7 +26,9 @@
                         <a href="/publish">提问</a>
                     </li>
                     <li><a href="/profile/replies">通知 <span class="badge" th:text="${session.unreadCount}"></span></a></li>
+                    <li th:if="${session.user!=null}" style="margin-top: 5px"><img class="media-object img-circle"  th:src="${session.user.getAvatarUrl()}"></li>
                     <li class="dropdown" th:if="${session.user!=null}">
+
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                            aria-expanded="false" >
                             <span th:text="${session.user.getName()}"></span>

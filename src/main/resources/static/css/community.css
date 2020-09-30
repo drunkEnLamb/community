@@ -142,6 +142,11 @@ body{
     padding: 60px 0 60px 60px;
     border-left: 1px solid #e6e6e6;
 }
+.register-side-bar{
+    height: 326px;
+    padding: 60px 0 60px 60px;
+    border-left: 1px solid #e6e6e6;
+}
 .mod-footer{
     height: 70px;
     line-height: 70px;
